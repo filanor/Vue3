@@ -6,7 +6,7 @@ const App = {
   data() {
     return {
       activeIndex: 0, // то, что позволяет определить текущий активный шаг
-      completed: true,
+      completed: false,
       nextText: "Вперед",
       steps: [
         {
@@ -40,7 +40,9 @@ const App = {
   methods: {
     prev() {
       // когда нажимаем кнопку назад
-      this.activeIndex--;
+      if (this.activeIndex > 0) {
+        this.activeIndex--;
+      }
     },
     reset() {
       // начать заново

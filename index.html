@@ -17,12 +17,12 @@
             <li
               v-for="(item, i) in steps"
               @click="setActive(i)"
-              :class="['steps-item', {'active' : getActive === i, 'done': getActive > i}]"
+              :class="['steps-item', {'active' : activeIndex === i, 'done': activeIndex > i}]"
             >
               <span>{{i + 1}}</span> {{item.title}}
             </li>
           </ul>
-          <div v-show="completed == false">
+          <div v-if="!completed">
             <button class="btn" :disabled="disabledPrev" @click="prev">
               Назад
             </button>
@@ -32,9 +32,7 @@
               v-text="getBtnText"
             ></button>
           </div>
-          <button class="btn" @click="reset" v-show="completed">
-            Начать заново
-          </button>
+          <button class="btn" @click="reset" v-else>Начать заново</button>
         </div>
       </div>
     </div>
